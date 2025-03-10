@@ -1,0 +1,23 @@
+<!-- views/admin/edit-product.ejs -->
+<%- include('../admin/layout', { title: 'Chỉnh sửa Sản phẩm' }) %>
+
+<h2>Chỉnh sửa Sản phẩm</h2>
+<form action="/admin/products/<%= product._id %>/update" method="POST">
+    <div>
+        <label for="name">Tên sản phẩm:</label>
+        <input type="text" name="name" value="<%= product.name %>" required>
+    </div>
+    <div>
+        <label for="price">Giá:</label>
+        <input type="number" name="price" value="<%= product.price %>" required>
+    </div>
+    <div>
+        <label for="category">Danh mục:</label>
+        <input type="text" name="category" value="<%= product.category %>" required>
+    </div>
+    <div>
+        <label for="description">Mô tả:</label>
+        <textarea name="description"><%= product.description %></textarea>
+    </div>
+    <button type="submit">Cập nhật</button>
+</form>

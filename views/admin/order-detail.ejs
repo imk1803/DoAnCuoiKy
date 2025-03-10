@@ -1,0 +1,14 @@
+<!-- views/admin/order-detail.ejs -->
+<%- include('../admin/layout', { title: 'Chi tiết Đơn hàng' }) %>
+
+<h2>Chi tiết Đơn hàng</h2>
+<p>ID Đơn hàng: <%= order._id %></p>
+<p>Tên người dùng: <%= order.userId.username %></p>
+<p>Địa chỉ: <%= order.address %></p>
+<p>Trạng thái: <%= order.status %></p>
+<h3>Sản phẩm trong đơn hàng</h3>
+<ul>
+    <% order.products.forEach(item => { %>
+        <li><%= item.productId.name %> - Số lượng: <%= item.quantity %></li>
+    <% }) %>
+</ul>

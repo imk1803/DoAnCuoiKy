@@ -1,0 +1,22 @@
+<!-- views/admin/edit-user.ejs -->
+<%- include('../admin/layout', { title: 'Chỉnh sửa Người dùng' }) %>
+
+<h2>Chỉnh sửa Người dùng</h2>
+<form action="/admin/users/<%= user._id %>/update" method="POST">
+    <div>
+        <label for="username">Tên người dùng:</label>
+        <input type="text" name="username" value="<%= user.username %>" required>
+    </div>
+    <div>
+        <label for="role">Vai trò:</label>
+        <select name="role">
+            <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>Người dùng</option>
+            <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Quản trị viên</option>
+        </select>
+    </div>
+    <div>
+        <label for="newPassword">Mật khẩu mới:</label>
+        <input type="password" name="newPassword">
+    </div>
+    <button type="submit">Cập nhật</button>
+</form>

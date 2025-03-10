@@ -1,0 +1,9 @@
+<!-- views/admin/dashboard.ejs -->
+<%- include('../admin/layout', { title: 'Bảng điều khiển' }) %>
+
+<h2>Bảng điều khiển</h2>
+<div>
+    <p>Tổng số người dùng: <%= stats.totalUsers %></p>
+    <p>Tổng số sản phẩm: <%= stats.totalProducts %></p>
+    <p>Tổng số đơn hàng: <%= stats.totalOrders %></p>
+</div>

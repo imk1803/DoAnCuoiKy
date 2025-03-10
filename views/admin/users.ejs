@@ -1,0 +1,31 @@
+<!-- views/admin/users.ejs -->
+<%- include('../admin/layout', { title: 'Quản lý Người dùng' }) %>
+
+<div class="d-flex justify-content-between mb-4">
+    <h2>Danh sách Người dùng</h2>
+    <a href="/admin/users/new" class="btn btn-primary">Thêm người dùng</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tên người dùng</th>
+            <th>Vai trò</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.username %></td>
+                <td><%= user.role %></td>
+                <td>
+                    <a href="/admin/users/<%= user._id %>/edit">Sửa</a>
+                    <form action="/admin/users/<%= user._id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

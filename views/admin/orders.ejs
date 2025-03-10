@@ -1,0 +1,28 @@
+<!-- views/admin/orders.ejs -->
+<%- include('../admin/layout', { title: 'Quản lý Đơn hàng' }) %>
+
+<h2>Danh sách Đơn hàng</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID Đơn hàng</th>
+            <th>Tên người dùng</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% orders.forEach(order => { %>
+            <tr>
+                <td><%= order._id %></td>
+                <td><%= order.userId.username %></td>
+                <td><%= order.totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) %></td>
+                <td><%= order.status %></td>
+                <td>
+                    <a href="/admin/orders/<%= order._id %>">Chi tiết</a>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

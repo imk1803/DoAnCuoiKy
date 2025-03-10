@@ -1,0 +1,33 @@
+<!-- views/admin/products.ejs -->
+<%- include('../admin/layout', { title: 'Quản lý Sản phẩm' }) %>
+
+<div class="d-flex justify-content-between mb-4">
+    <h2>Danh sách Sản phẩm</h2>
+    <a href="/admin/products/new" class="btn btn-primary">Thêm sản phẩm</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Danh mục</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.forEach(product => { %>
+            <tr>
+                <td><%= product.name %></td>
+                <td><%= product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }) %></td>
+                <td><%= product.category %></td>
+                <td>
+                    <a href="/admin/products/<%= product._id %>/edit">Sửa</a>
+                    <form action="/admin/products/<%= product._id %>?_method=DELETE" method="POST" style="display:inline;">
+                        <button type="submit">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
