@@ -1,9 +1,49 @@
-<!-- views/admin/dashboard.ejs -->
-<%- include('../admin/layout', { title: 'Bảng điều khiển' }) %>
-
-<h2>Bảng điều khiển</h2>
-<div>
-    <p>Tổng số người dùng: <%= stats.totalUsers %></p>
-    <p>Tổng số sản phẩm: <%= stats.totalProducts %></p>
-    <p>Tổng số đơn hàng: <%= stats.totalOrders %></p>
-</div>
+<%- include('admin/layout', { body: `
+    <h1>Dashboard</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+          <div class="card-header">Total Users</div>
+          <div class="card-body">
+            <h5 class="card-title"><%= stats.totalUsers %></h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+          <div class="card-header">Total Products</div>
+          <div class="card-body">
+            <h5 class="card-title"><%= stats.totalProducts %></h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+          <div class="card-header">Total Orders</div>
+          <div class="card-body">
+            <h5 class="card-title"><%= stats.totalOrders %></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <h3>Recent Orders</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% stats.recentOrders.forEach(order => { %>
+          <tr>
+            <td><%= order._id %></td>
+            <td><%= order.userId.username %></td>
+            <td><%= order.createdAt.toLocaleDateString() %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+` }) %>

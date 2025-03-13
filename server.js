@@ -87,6 +87,5 @@ app.use('/', cart);
 app.use('/', checkout);
 app.use('/', about);
 
-
 // ========================== KHỞI ĐỘNG SERVER ==========================
 app.listen(PORT, () => console.log(`Server đang chạy tại http://localhost:${PORT}`));
